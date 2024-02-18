@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,14 @@ namespace Todolistappp
 
         }
 
-        public void AddTask(string name)
+        public void AddTask(string name, DateTime duedate)
         {
-            AddTask(new Task { Name = name });
+            AddTask(new Task { Name = name, DueDate = duedate});
+        }
+
+        public Task FindById(int id)
+        {
+            return _tasks.FirstOrDefault(x => x.Id == id);
         }
 
         public void AddTask(params Task[] tasks) 
@@ -29,6 +35,7 @@ namespace Todolistappp
                 currentId = selectedLastTask.Id;
             }
 
+
             tasks.ToList().ForEach(x =>
             {
                 currentId++;
@@ -37,6 +44,17 @@ namespace Todolistappp
 
             _tasks.AddRange(tasks);
 
+        }
+
+        public void Delete(int id)
+        {
+            var selectedTask = FindById(id);
+            if (selectedTask == null)
+            {
+                throw new Exception(string.Format("Cannot find the Task with Id of {0}", id));
+            }
+
+                _tasks.Remove(selectedTask);
         }
 
         public IQueryable<Task> AllTasks()
@@ -51,19 +69,10 @@ namespace Todolistappp
             return string.Join(Environment.NewLine, _tasks.Select(x => x.ToString()));
         }
 
-
-
-
-        
-
-
-
-
-
-
-
-
-
+        public IQueryable<Task> DueDates(DateTime now)
+        {
+            return _tasks.Where(x => x.DueDate > now).AsQueryable();
+        }
 
 
     }
