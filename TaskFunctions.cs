@@ -46,6 +46,36 @@ namespace Todolistappp
 
         }
 
+        public void UpdateTask(Task outertask)
+        {
+            var Tasks = _tasks.Where(Task => Task.Name.ToLower().Contains("a")).ToList(); 
+            Tasks.ForEach(Task => {
+            
+            
+            
+            
+            });
+
+            var selectedTask = _tasks.FirstOrDefault(x => x.Id == outertask.Id);
+            if (selectedTask == null)
+            {
+                throw new Exception(string.Format("Cannot find the Task with Id of {0}", outertask.Id));
+            }
+            else
+            {
+                _tasks.Remove(selectedTask);
+                var newtask = outertask;
+                _tasks.Add(newtask);
+                
+            }
+            
+            
+            
+            
+
+
+        }
+
         public void Delete(int id)
         {
             var selectedTask = FindById(id);
@@ -71,7 +101,7 @@ namespace Todolistappp
 
         public IQueryable<Task> DueDates(DateTime now)
         {
-            return _tasks.Where(x => x.DueDate > now).AsQueryable();
+            return _tasks.Where(x => x.DueDate < now).AsQueryable();
         }
 
 

@@ -6,8 +6,16 @@
 Nuget Packages: 
 MaterialSkin.2
 
+Todo:
+Find a way to improve list view design. Poor interface.
 
 New improvements coming in the future.
+
+21/02/2024
+*View task details added
+*Change task details added
+*overdue task reminder functionality added
+
 
 18/02/2024
 *delete task added

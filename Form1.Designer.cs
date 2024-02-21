@@ -28,12 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             materialFloatingActionButton1 = new MaterialSkin.Controls.MaterialFloatingActionButton();
             materialListBox1 = new MaterialSkin.Controls.MaterialListBox();
             materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
             materialFloatingActionButton2 = new MaterialSkin.Controls.MaterialFloatingActionButton();
             dateTimePicker1 = new DateTimePicker();
             dateTimePicker2 = new DateTimePicker();
+            panel1 = new Panel();
+            EditLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            EditButton1 = new MaterialSkin.Controls.MaterialButton();
+            EditLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            EditDateTimePicker2 = new DateTimePicker();
+            EditDateTimePicker1 = new DateTimePicker();
+            EditText1 = new MaterialSkin.Controls.MaterialTextBox();
+            ButtonReturn1 = new MaterialSkin.Controls.MaterialFloatingActionButton();
+            timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // materialFloatingActionButton1
@@ -63,6 +75,7 @@
             materialListBox1.Size = new Size(414, 834);
             materialListBox1.TabIndex = 3;
             materialListBox1.SelectedIndexChanged += materialListBox1_SelectedIndexChanged;
+            materialListBox1.DoubleClick += materialListBox1_DoubleClick;
             // 
             // materialTextBox1
             // 
@@ -110,11 +123,126 @@
             dateTimePicker2.Size = new Size(132, 27);
             dateTimePicker2.TabIndex = 7;
             // 
+            // panel1
+            // 
+            panel1.Controls.Add(EditLabel2);
+            panel1.Controls.Add(EditButton1);
+            panel1.Controls.Add(EditLabel1);
+            panel1.Controls.Add(EditDateTimePicker2);
+            panel1.Controls.Add(EditDateTimePicker1);
+            panel1.Controls.Add(EditText1);
+            panel1.Controls.Add(ButtonReturn1);
+            panel1.Location = new Point(417, 63);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(414, 834);
+            panel1.TabIndex = 8;
+            // 
+            // EditLabel2
+            // 
+            EditLabel2.AutoSize = true;
+            EditLabel2.Depth = 0;
+            EditLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            EditLabel2.Location = new Point(147, 56);
+            EditLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            EditLabel2.Name = "EditLabel2";
+            EditLabel2.Size = new Size(107, 19);
+            EditLabel2.TabIndex = 6;
+            EditLabel2.Text = "materialLabel1";
+            // 
+            // EditButton1
+            // 
+            EditButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            EditButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            EditButton1.Depth = 0;
+            EditButton1.HighEmphasis = true;
+            EditButton1.Icon = null;
+            EditButton1.Location = new Point(214, 752);
+            EditButton1.Margin = new Padding(4, 6, 4, 6);
+            EditButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            EditButton1.Name = "EditButton1";
+            EditButton1.NoAccentTextColor = Color.Empty;
+            EditButton1.Size = new Size(121, 36);
+            EditButton1.TabIndex = 5;
+            EditButton1.Text = "Change Task";
+            EditButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            EditButton1.UseAccentColor = false;
+            EditButton1.UseVisualStyleBackColor = true;
+            EditButton1.Click += EditButton1_Click;
+            // 
+            // EditLabel1
+            // 
+            EditLabel1.AutoSize = true;
+            EditLabel1.Depth = 0;
+            EditLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            EditLabel1.Location = new Point(20, 145);
+            EditLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            EditLabel1.Name = "EditLabel1";
+            EditLabel1.Size = new Size(14, 19);
+            EditLabel1.TabIndex = 4;
+            EditLabel1.Text = "Id";
+            // 
+            // EditDateTimePicker2
+            // 
+            EditDateTimePicker2.Format = DateTimePickerFormat.Time;
+            EditDateTimePicker2.Location = new Point(44, 333);
+            EditDateTimePicker2.Name = "EditDateTimePicker2";
+            EditDateTimePicker2.Size = new Size(109, 27);
+            EditDateTimePicker2.TabIndex = 3;
+            // 
+            // EditDateTimePicker1
+            // 
+            EditDateTimePicker1.Format = DateTimePickerFormat.Short;
+            EditDateTimePicker1.Location = new Point(44, 245);
+            EditDateTimePicker1.Name = "EditDateTimePicker1";
+            EditDateTimePicker1.Size = new Size(109, 27);
+            EditDateTimePicker1.TabIndex = 2;
+            // 
+            // EditText1
+            // 
+            EditText1.AnimateReadOnly = false;
+            EditText1.BorderStyle = BorderStyle.None;
+            EditText1.Depth = 0;
+            EditText1.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            EditText1.LeadingIcon = null;
+            EditText1.Location = new Point(44, 130);
+            EditText1.MaxLength = 50;
+            EditText1.MouseState = MaterialSkin.MouseState.OUT;
+            EditText1.Multiline = false;
+            EditText1.Name = "EditText1";
+            EditText1.Size = new Size(328, 50);
+            EditText1.TabIndex = 1;
+            EditText1.Text = "";
+            EditText1.TrailingIcon = null;
+            // 
+            // ButtonReturn1
+            // 
+            ButtonReturn1.Depth = 0;
+            ButtonReturn1.Icon = null;
+            ButtonReturn1.Location = new Point(20, 741);
+            ButtonReturn1.MouseState = MaterialSkin.MouseState.HOVER;
+            ButtonReturn1.Name = "ButtonReturn1";
+            ButtonReturn1.Size = new Size(70, 70);
+            ButtonReturn1.TabIndex = 0;
+            ButtonReturn1.Text = "materialFloatingActionButton3";
+            ButtonReturn1.UseVisualStyleBackColor = true;
+            ButtonReturn1.Click += materialFloatingActionButton3_Click;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
+            // 
+            // timer2
+            // 
+            timer2.Interval = 1;
+            timer2.Tick += timer2_Tick;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(414, 896);
+            Controls.Add(panel1);
             Controls.Add(dateTimePicker2);
             Controls.Add(dateTimePicker1);
             Controls.Add(materialFloatingActionButton2);
@@ -126,6 +254,8 @@
             Sizable = false;
             Text = "TodoList App";
             Load += Form1_Load;
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -137,5 +267,15 @@
         private MaterialSkin.Controls.MaterialFloatingActionButton materialFloatingActionButton2;
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
+        private Panel panel1;
+        private MaterialSkin.Controls.MaterialFloatingActionButton ButtonReturn1;
+        private System.Windows.Forms.Timer timer1;
+        private MaterialSkin.Controls.MaterialLabel EditLabel1;
+        private DateTimePicker EditDateTimePicker2;
+        private DateTimePicker EditDateTimePicker1;
+        private MaterialSkin.Controls.MaterialTextBox EditText1;
+        private MaterialSkin.Controls.MaterialButton EditButton1;
+        private System.Windows.Forms.Timer timer2;
+        private MaterialSkin.Controls.MaterialLabel EditLabel2;
     }
 }
