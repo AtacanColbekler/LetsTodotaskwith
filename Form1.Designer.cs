@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             materialFloatingActionButton1 = new MaterialSkin.Controls.MaterialFloatingActionButton();
             materialListBox1 = new MaterialSkin.Controls.MaterialListBox();
             materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
@@ -43,8 +42,6 @@
             EditDateTimePicker1 = new DateTimePicker();
             EditText1 = new MaterialSkin.Controls.MaterialTextBox();
             ButtonReturn1 = new MaterialSkin.Controls.MaterialFloatingActionButton();
-            timer1 = new System.Windows.Forms.Timer(components);
-            timer2 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -227,16 +224,6 @@
             ButtonReturn1.UseVisualStyleBackColor = true;
             ButtonReturn1.Click += materialFloatingActionButton3_Click;
             // 
-            // timer1
-            // 
-            timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick;
-            // 
-            // timer2
-            // 
-            timer2.Interval = 1;
-            timer2.Tick += timer2_Tick;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -269,13 +256,11 @@
         private DateTimePicker dateTimePicker2;
         private Panel panel1;
         private MaterialSkin.Controls.MaterialFloatingActionButton ButtonReturn1;
-        private System.Windows.Forms.Timer timer1;
         private MaterialSkin.Controls.MaterialLabel EditLabel1;
         private DateTimePicker EditDateTimePicker2;
         private DateTimePicker EditDateTimePicker1;
         private MaterialSkin.Controls.MaterialTextBox EditText1;
         private MaterialSkin.Controls.MaterialButton EditButton1;
-        private System.Windows.Forms.Timer timer2;
         private MaterialSkin.Controls.MaterialLabel EditLabel2;
     }
 }
