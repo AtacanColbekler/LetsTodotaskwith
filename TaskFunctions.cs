@@ -4,21 +4,26 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+
 
 namespace Todolistappp
 {
     public class TaskFunctions
     {
+        Data db = new Data();
+
         private readonly List<Task> _tasks;
         public TaskFunctions()
         {
             _tasks = new List<Task>();
+            _tasks = db.GetDatabase();
 
         }
 
         public void AddTask(string name, DateTime duedate)
         {
-            AddTask(new Task { Name = name, DueDate = duedate});
+            AddTask(new Task { Name = name, DueDate = duedate });
         }
 
         public Task FindById(int id)
@@ -103,6 +108,9 @@ namespace Todolistappp
         {
             return _tasks.Where(x => x.DueDate < now).AsQueryable();
         }
+
+
+
 
 
     }

@@ -20,15 +20,10 @@ namespace Todolistappp
             materialSkinManager.ColorScheme = new ColorScheme(Primary.DeepPurple800, Primary.DeepPurple900, Primary.DeepPurple500, Accent.LightBlue200, TextShade.WHITE);
 
         }
-
-
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            UpdateListBox();
         }
-
         private void materialFloatingActionButton1_Click(object sender, EventArgs e)
         {
             var taskname = materialTextBox1.Text.ToString();
@@ -48,7 +43,6 @@ namespace Todolistappp
             
 
         }
-
         public void UpdateListBox()
         {
 
@@ -67,12 +61,10 @@ namespace Todolistappp
 
 
         }
-
         private void materialListBox1_SelectedIndexChanged(object sender, MaterialListBoxItem selectedItem)
         {
 
         }
-
         private void materialFloatingActionButton2_Click(object sender, EventArgs e)
         {
             if (materialListBox1.SelectedItem != null)
@@ -87,9 +79,6 @@ namespace Todolistappp
 
 
         }
-
-
-
         public void BackAnim()
         {
             var stopPosX = 0;
@@ -103,7 +92,6 @@ namespace Todolistappp
 
 
         }
-
         public void returnAnim()
         {
             var stopPosX = 417;
@@ -114,7 +102,6 @@ namespace Todolistappp
             }
             
         }
-
         private void materialListBox1_DoubleClick(object sender, EventArgs e)
         {
 
@@ -151,12 +138,10 @@ namespace Todolistappp
 
 
         }
-
         private void materialFloatingActionButton3_Click(object sender, EventArgs e)
         {
             returnAnim();
         }
-
         private void EditButton1_Click(object sender, EventArgs e)
         {
             //Change the task button
@@ -196,6 +181,5 @@ namespace Todolistappp
             returnAnim();
         }
 
-        
     }
 }
