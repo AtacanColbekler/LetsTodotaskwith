@@ -21,6 +21,11 @@ namespace Todolistappp
 
         }
 
+        public void syncToDatabase()
+        {
+            db.SetDatabase(_tasks);
+        }
+
         public void AddTask(string name, DateTime duedate)
         {
             AddTask(new Task { Name = name, DueDate = duedate });
@@ -48,6 +53,7 @@ namespace Todolistappp
             });
 
             _tasks.AddRange(tasks);
+            syncToDatabase();
 
         }
 
@@ -71,6 +77,7 @@ namespace Todolistappp
                 _tasks.Remove(selectedTask);
                 var newtask = outertask;
                 _tasks.Add(newtask);
+                syncToDatabase();
                 
             }
             
@@ -90,6 +97,7 @@ namespace Todolistappp
             }
 
                 _tasks.Remove(selectedTask);
+                syncToDatabase();
         }
 
         public IQueryable<Task> AllTasks()

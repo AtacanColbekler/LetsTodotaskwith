@@ -12,6 +12,7 @@ namespace Todolistappp
 {
     internal class Data
     {
+        string root = string.Empty;//TODO: get root of database
         string connectionString = @"URI=file:C:\Users\sysadmin\source\repos\Todolistappp\Files\mydatas.db";
         string table = "Tasks" ;
 
@@ -22,7 +23,7 @@ namespace Todolistappp
             var create_table = $"CREATE TABLE '{table}' (id INTEGER PRIMARY KEY, Name TEXT, DueDate TEXT)";
             var remove_table = $"DROP TABLE '{table}' ";
             var exist_table = $"SELECT count(*) FROM sqlite_master WHERE type='table' AND name='{table}';";
-            var insert_table = $"INSERT INTO '{table}' (id, Name, DueDate) VALUES (1, 'test', '2/11/2023');";
+            //var insert_table = $"INSERT INTO '{table}' (id, Name, DueDate) VALUES (1, 'test', '2/11/2023');";//for the test purpose
 
             using var connection = new SQLiteConnection(connectionString);
             connection.Open();
@@ -31,7 +32,7 @@ namespace Todolistappp
             var ComCreateTable = new SQLiteCommand(create_table, connection);
             var ComRemoveTable = new SQLiteCommand(remove_table, connection);
             var ComExistTable = new SQLiteCommand(exist_table, connection);
-            var ComTest = new SQLiteCommand(insert_table, connection);
+            //var ComTest = new SQLiteCommand(insert_table, connection);
 
             
 
@@ -53,7 +54,7 @@ namespace Todolistappp
                 ComCreateTable.ExecuteNonQuery();
             }
 
-            //ComTest.ExecuteNonQuery();
+            //ComTest.ExecuteNonQuery();//for the test purpose
             connection.Close();
             
             
@@ -91,7 +92,34 @@ namespace Todolistappp
 
         public void SetDatabase(List<Task> tasks)
         {
-            //remove every item in table and reattach all tasks from ram
+            //remove every item in table and instert all tasks from ram
+            var data = tasks;
+            var query1 = $"DELETE FROM {table}";
+            var connection = new SQLiteConnection (connectionString);
+
+            connection.Open();
+            using (SQLiteCommand cmd = new SQLiteCommand(query1, connection))
+                {
+                    cmd.ExecuteNonQuery();
+                }
+
+            
+            using (SQLiteCommand cmd = new SQLiteCommand(connection))
+                foreach (var item in data)
+                {
+
+
+                    var id = item.Id;
+                    var name = item.Name;
+                    var duedate = item.DueDate;
+                    var query = $"INSERT INTO '{table}' (id, Name, DueDate) VALUES ({id}, '{name}', '{duedate}');";
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+
+
+
+                }
+
 
         }
 
